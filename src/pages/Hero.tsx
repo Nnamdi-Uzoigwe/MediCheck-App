@@ -10,7 +10,7 @@ export default function Hero() {
                 </p>
                 <Button>Check Your Symptoms Now</Button>
             </div>
-            <img src="/new4.png" alt="" className="w-[70%] lg:w-[50%]" />
+            <img src="/new4.png" alt="" className="w-[80%] lg:w-[50%]" />
             
         </div>
     )
