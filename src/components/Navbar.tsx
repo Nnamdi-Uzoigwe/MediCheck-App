@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import { Menu, X } from "lucide-react";
+import { Mail, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,12 +14,23 @@ export default function Navbar() {
     setIsOpen(false);
   };
   return (
-    <div className="flex relative h-[90px] px-6 lg:px-40 justify-between items-center">
-      <div className="logo text-[#e9e3d3] font-semibold text-2xl">
-        Medi<span className="text-purple-500">Check</span>
+    <div className="fixed top-0 left-0 w-full">
+      <div className="bg-[#00A0AA] px-6 lg:px-40 flex flex-col lg:flex-row items-center py-3 justify-between">
+        <p className="text-white flex items-center gap-2">
+          <Mail size={20} /> 
+          MediCheck@health.care
+        </p>
+        <p className="text-white flex items-center gap-2">
+          <FaWhatsapp size={20} />
+          Connect on Whatsapp
+        </p>
+      </div>
+      <div className="flex relative bg-white h-[90px] px-6 lg:px-40 justify-between items-center">
+        <div className="logo  font-semibold text-2xl">
+        Medi<span className="text-[#00A0AA]">Check</span>
       </div>
 
-      <div className="links hidden text-white text-lg lg:flex gap-8">
+      <div className="links hidden  text-md font-semibold lg:flex gap-8">
         <Link to="/">Home</Link>
         <Link to="/Features">Features</Link>
         <Link to="/Contact">Contact</Link>
@@ -28,11 +40,11 @@ export default function Navbar() {
         <Button>Get Started</Button>
       </div>
       <div className="flex lg:hidden cursor-pointer" onClick={handleOpen}>
-        <Menu color="white" size={26} />
+        <Menu size={26} />
       </div>
 
       {isOpen && (
-        <div className="flex justify-between rounded-md lg:hidden absolute right-3 p-4 w-[250px] top-[20px] bg-purple-500">
+        <div className="flex justify-between rounded-md lg:hidden absolute right-3 p-4 w-[250px] top-[20px] bg-[#0a7279]">
           <div className="links mt-10 text-white text-lg flex flex-col gap-4">
             <Link to="/">Home</Link>
             <Link to="/Features">Features</Link>
@@ -45,6 +57,9 @@ export default function Navbar() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }
+
+

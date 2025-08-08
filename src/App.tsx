@@ -9,7 +9,7 @@ function App() {
 
   return (
    <Router>
-    <div className=' bg-[#15052d]'>
+    <div className='bg-[#F8F9FE]'>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
