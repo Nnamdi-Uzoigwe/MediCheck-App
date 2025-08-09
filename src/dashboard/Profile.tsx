@@ -618,7 +618,8 @@
 // }
 
 
-import { useState, useRef, ChangeEvent } from 'react';
+import { useState, useRef } from 'react';
+import type {ChangeEvent} from "react";
 import { Camera, Edit3, Save, X, User, Mail, Phone, Calendar, Heart, Activity, Scale, Ruler, Droplet, AlertCircle } from 'lucide-react';
 import DashboardLayout from '../components/DashboardLayout';
 
