@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MdLocalHospital } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
   const [open, setOpen] = useState(false);
   return (
     <div>
@@ -19,8 +19,8 @@ export default function Login() {
           {/* <Cross color="red" className="text-red-400" /> */}
           <MdLocalHospital className="text-red-600 text-[40px] font-semibold" />
         </div>
-        <h2 className="font-semibold text-3xl text-gray-600">Welcome Back!</h2>
-        <p className="mt-2 text-gray-700 font-semibold">Login to your account to continue</p>
+        <h2 className="font-semibold text-3xl text-gray-600">Welcome to Medi<span className="text-[#00a0aa]">Check</span>!</h2>
+        <p className="mt-2 text-gray-700 font-semibold">Create your account to get started</p>
 
         <form className=" mt-10 bg-white shadow-md p-6 rounded-[20px]">
           <div>
@@ -69,8 +69,8 @@ export default function Login() {
             />
           </div>
 
-          <div className="mt-4">
-            <p className="text-center">Don't have an account? <Link to="/register" className="text-[#00a0aa]">Create an account</Link></p>
+          <div>
+            <p>Already have an account? <Link to="/login">Login</Link></p>
           </div>
         </form>
       </div>
