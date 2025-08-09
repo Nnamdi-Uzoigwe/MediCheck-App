@@ -49,7 +49,7 @@ export default function Navbar() {
             <Link to="/">Home</Link>
             <Link to="/Features">Features</Link>
             <Link to="/Contact">Contact</Link>
-            <Link to="/Contact">Login</Link>
+            <Link to="/login">Login</Link>
             <Link to="/login">Get Started</Link>
           </div>
           <div className="cursor-pointer" onClick={handleClose}>
