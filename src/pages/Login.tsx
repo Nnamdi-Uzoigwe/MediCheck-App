@@ -81,10 +81,15 @@
 import { Eye, EyeOff, MoveLeft } from "lucide-react";
 import { useState } from "react";
 import { MdLocalHospital } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function Login() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate()
+  function handleLogin() {
+    navigate("/dashboard")
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -159,6 +164,7 @@ export default function Login() {
             <input
               type="submit"
               value="Login"
+              onClick={handleLogin}
               className="bg-[#00A0AA] text-white w-full p-2 rounded-[8px] cursor-pointer"
             />
           </div>
