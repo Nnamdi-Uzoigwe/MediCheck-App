@@ -14,7 +14,7 @@ export default function Navbar() {
     setIsOpen(false);
   };
   return (
-    <div className="fixed top-0 left-0 w-full">
+    <div className="z-50 fixed top-0 left-0 w-full">
       <div className="bg-[#00A0AA] px-6 lg:px-40 flex flex-col lg:flex-row items-center py-3 justify-between">
         <p className="text-white flex items-center gap-2">
           <Mail size={20} /> 
@@ -34,7 +34,7 @@ export default function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/Features">Features</Link>
         <Link to="/Contact">Contact</Link>
-        <Link to="/Contact">Login</Link>
+        <Link to="/login">Login</Link>
       </div>
       <div className="hidden lg:flex">
         <Button>Get Started</Button>
