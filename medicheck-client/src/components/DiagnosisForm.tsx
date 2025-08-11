@@ -460,16 +460,21 @@ export default function DiagnosisForm() {
 
   return (
     <div className="flex justify-center mt-0 lg:mt-14 items-center h-auto min-h-screen p-4">
-      {step === 1 && (
         <div className="bg-white w-full max-w-2xl p-4 rounded-[10px] border-2 border-gray-400">
-          <Progress />
+        
+  <h5 className="font-medium text-sm">Step {step} of 3</h5>
+          <Progress step={step} />
+          {step === 1  && (
+          <>
           <h2 className="font-semibold text-2xl text-[#005eaa]">
             Core Symptoms & Urgent Info
           </h2>
           <p className="text-gray-700">
             Please fill correctly as this is critical for immediate diagnosis.
           </p>
-
+          </>
+           )}
+      {step === 1 && (
           <form className="mt-10">
             <div className="mt-4 border-0 lg:border border-gray-400 p-2 lg:p-4 rounded-[10px] min-h-[500px]">
               <h4 className="font-semibold text-gray-500 mb-4">
@@ -586,12 +591,12 @@ export default function DiagnosisForm() {
               </div>
             </div>
           </form>
-        </div>
       )}
+        
 
       {step === 2 && (
-        <div className="bg-white w-full max-w-2xl p-4 rounded-[10px] border-2 border-gray-400">
-          <Progress />
+        // <div className="bg-white w-full max-w-2xl p-4 rounded-[10px] border-2 border-gray-400">
+        <div>
           <h2 className="font-semibold text-2xl text-[#005eaa]">
             Medical History
           </h2>
@@ -709,8 +714,8 @@ export default function DiagnosisForm() {
       )}
 
       {step === 3 && (
-        <div className="bg-white w-full max-w-2xl p-4 rounded-[10px] border-2 border-gray-400">
-          <Progress />
+        // <div className="bg-white w-full max-w-2xl p-4 rounded-[10px] border-2 border-gray-400">
+        <div>
           <h2 className="font-semibold text-2xl text-[#005eaa]">Supporting Factors</h2>
           <p className="text-gray-700">Optional for refined recommendations</p>
 
@@ -794,6 +799,7 @@ export default function DiagnosisForm() {
           </form>
         </div>
       )}
+      </div>
     </div>
   );
 }
