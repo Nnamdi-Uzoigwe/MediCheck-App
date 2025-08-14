@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/auth", UserRoute);
-app.use("/api/symtoms", symptomRoute);
+app.use("/api/symptoms", symptomRoute);
 app.use("/api/diagnosis", diagnosisRoute);
 
 
