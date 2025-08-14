@@ -14,6 +14,7 @@ import Record from "./dashboard/Record";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function App() {
   return (
     //  <Router>
     <div className="bg-[#F8F9FE]">
+      <ScrollToTop />
       {!hideLayout && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
