@@ -38,7 +38,7 @@ module.exports = (req, res, next) => {
         error: "Token not provided" 
       });
     }
-
+console.log("Authorization header:", req.headers.authorization);
     // 3. Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET, {
       algorithms: ['HS256'], // Specify allowed algorithm
