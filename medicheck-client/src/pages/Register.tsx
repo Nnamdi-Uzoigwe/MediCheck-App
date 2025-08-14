@@ -35,7 +35,7 @@ export default function Register() {
   
   
       try {
-        const res = await fetch("https://medicheck-app-4.onrender.com/api/auth/register", {
+        const res = await fetch("https://medicheck-app-3.onrender.com/api/auth/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

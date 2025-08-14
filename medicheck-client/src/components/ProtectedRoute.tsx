@@ -28,8 +28,8 @@
 //   useEffect(() => {
 //     const checkAuth = async () => {
 //       try {
-//         const token = localStorage.getItem('token');
-//         const userData = localStorage.getItem('user');
+//         const token = sessionStorage.getItem('token');
+//         const userData = sessionStorage.getItem('user');
         
 //         if (!token || !userData) {
 //           setIsAuthenticated(false);
@@ -113,7 +113,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   
   // Check if user is authenticated
   const isAuthenticated = () => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     
     if (!token) {
       return false;
@@ -126,16 +126,16 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
       
       if (payload.exp < currentTime) {
         // Token is expired, remove it
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('user');
         return false;
       }
       
       return true;
     } catch (error) {
       // Invalid token format
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
       return false;
     }
   };

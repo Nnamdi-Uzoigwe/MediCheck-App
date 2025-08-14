@@ -32,7 +32,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://medicheck-app-4.onrender.com/api/auth/login", {
+      const res = await fetch("https://medicheck-app-3.onrender.com/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +50,11 @@ export default function Login() {
       toast.success("Login successful!");
 
       // Store JWT in localStorage
-      localStorage.setItem("token", data.token);
+      sessionStorage.setItem("token", data.token);
+
+      sessionStorage.setItem('user', JSON.stringify(data.user));
+        console.log("token set at login:", data.token);
+        
       setTimeout(() => {
         navigate("/dashboard");
       }, 3000);

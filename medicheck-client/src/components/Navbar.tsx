@@ -42,7 +42,7 @@ export default function Navbar() {
       <div className="flex lg:hidden cursor-pointer" onClick={handleOpen}>
         <Menu size={26} />
       </div>
-
+     
       {isOpen && (
         <div className="flex justify-between rounded-md lg:hidden absolute right-3 p-4 w-[250px] top-[20px] bg-[#005eaa]">
           <div className="links mt-10 text-white text-lg flex flex-col gap-4">
