@@ -629,11 +629,11 @@ const Diagnosis = () => {
   const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null);
   const [analysisLoading, setAnalysisLoading] = useState(true); // Separate loading state for analysis
   const [error, setError] = useState<string | null>(null);
-  const [loadingMessage, setLoadingMessage] = useState("Processing your diagnosis...");
-  const [dataWasLoaded, setDataWasLoaded] = useState(false);
+  const [_, setLoadingMessage] = useState("Processing your diagnosis...");
+  // const [dataWasLoaded, setDataWasLoaded] = useState(false);
   
-  const retryCount = useRef(0);
-  const maxRetries = useRef(10);
+  // const retryCount = useRef(0);
+  // const maxRetries = useRef(10);
   const timeoutId = useRef<NodeJS.Timeout | null>(null);
   const hasInitialized = useRef(false); // Prevent multiple initializations
 
