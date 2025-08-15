@@ -22,7 +22,6 @@ import {
   Loader2
 } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
-import Spinner from "../components/Spinner";
 
 // interface AnalysisData {
 //   analysis: {
@@ -1139,10 +1138,10 @@ export default function Diagnosis() {
     console.log('🔄 analysisLoading state changed to:', analysisLoading);
   }, [analysisLoading]);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [_, setLoadingMessage] = useState("Processing your diagnosis...");
+  const [_, setLoading] = useState(false);
+  // const [_, setLoadingMessage] = useState("Processing your diagnosis...");
   
-  const timeoutId = useRef<NodeJS.Timeout | null>(null);
+  // const timeoutId = useRef<NodeJS.Timeout | null>(null);
   const hasInitialized = useRef(false);
 
   // Extract the values once to prevent dependency issues
@@ -1573,7 +1572,7 @@ const AnalysisSkeleton = () => (
                   {analysisLoading ? (
                     <div className="h-6 bg-gray-200 rounded w-12 animate-pulse"></div>
                   ) : (
-                    <p className="text-lg font-bold text-gray-800">{analysisData?.patientData?.age || 'N/A'}</p>
+                    <p className="text-lg font-bold text-gray-800">{analysis?.patientData?.age || 'N/A'}</p>
                   )}
                 </div>
               </div>
