@@ -2,6 +2,7 @@ import { Eye, EyeOff, MoveLeft } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Spinner from "../components/Spinner";
 
 interface RegisterForm {
   name: string,
@@ -153,12 +154,15 @@ export default function Register() {
 
           {/* Submit */}
           <div>
-            <input
+            {/* <input
               type="submit"
               disabled={loading}
               value={loading ? "Registering" : "Register"}
               className="bg-[#005eaa] text-white w-full p-2 rounded-[8px] cursor-pointer"
-            />
+            /> */}
+            <button disabled={loading} className="bg-[#005eaa] text-white w-full p-2 rounded-[8px] cursor-pointer flex items-center justify-center">
+                  {loading ? <Spinner /> : "Register"}
+            </button>
           </div>
 
           {/* Link to Login */}

@@ -2,6 +2,7 @@ import { Eye, EyeOff, MoveLeft } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Spinner  from "../components/Spinner";
 
 interface LoginForm {
   email: string;
@@ -144,12 +145,15 @@ export default function Login() {
           </div>
 
           <div>
-            <input
+            {/* <input
               type="submit"
               disabled={loading}
-              value={loading ? "Logging in..." : "Login"}
+              value={loading ? <Spinner /> : "Login"}
               className="bg-[#005eaa] text-white w-full p-2 rounded-[8px] cursor-pointer"
-            />
+            /> */}
+            <button disabled={loading} className="bg-[#005eaa] text-white w-full p-2 rounded-[8px] cursor-pointer flex items-center justify-center">
+              {loading ? <Spinner /> : "Login"}
+            </button>
           </div>
 
           <div className="mt-4">
