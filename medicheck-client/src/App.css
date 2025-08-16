@@ -16,3 +16,7 @@
 .animate-marquee {
   animation: marquee 25s linear infinite;
 }
+
+.leaflet-container {
+  cursor: default !important;
+}
