@@ -93,7 +93,7 @@ export default function Sidebar() {
     setIsOpen(false);
   };
 
-  // Close sidebar when clicking outside on mobile
+  // // Close sidebar when clicking outside on mobile
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const sidebar = document.getElementById('mobile-sidebar');
@@ -115,6 +115,7 @@ export default function Sidebar() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
+
 
   // Prevent body scroll when sidebar is open on mobile
   useEffect(() => {
