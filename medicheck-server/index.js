@@ -8,6 +8,7 @@ const symptomRoute = require("./routes/symptomRoute");
 const diagnosisRoute = require("./routes/diagnosisRoute");
 const hospitalRoutes = require("./routes/hospitalRoute");
 const geocodeRoute = require("./routes/geocode");
+const hospitalsRoutes = require("./routes/hospitalsRoutes");
 const app = express();
 
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use("/api/symptoms", symptomRoute);
 app.use("/api/diagnosis", diagnosisRoute);
 app.use("/api/save-hospital", hospitalRoutes);
 app.use('/api/geocode', geocodeRoute);
+app.use("/api/hospitals", hospitalsRoutes);
 
 
 mongoose.connect(process.env.MONGO_DB_URI)

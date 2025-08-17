@@ -71,3 +71,66 @@ router.get('/reverse', async (req, res) => {
 });
 
 module.exports = router;
+
+
+// // GET /api/hospitals?lat=...&lng=...
+// router.get('/hospitals', async (req, res) => {
+//   const { lat, lng } = req.query;
+//   if (!lat || !lng) {
+//     return res.status(400).json({ error: 'Latitude and longitude required' });
+//   }
+
+//   try {
+//     const response = await fetch(
+//       `https://nominatim.openstreetmap.org/search?format=json&countrycodes=ng&limit=10&amenity=hospital&bounded=1&viewbox=${lng-0.1},${lat+0.1},${lng+0.1},${lat-0.1}`,
+//       {
+//         headers: {
+//           'User-Agent': 'MediCheckApp/1.0 (uzonnamdi31@gmail.com)',
+//           'Accept-Language': 'en',
+//         },
+//       }
+//     );
+
+//     const data = await response.json();
+//     res.json(data);
+//   } catch (err) {
+//     console.error('Hospital search error:', err);
+//     res.status(500).json({ error: 'Failed to fetch hospitals' });
+//   }
+// });
+
+
+
+router.get("/hospitals", async (req, res) => {
+  try {
+    let { lat, lon } = req.query;
+
+    if (!lat || !lon) {
+      return res.status(400).json({ error: "Latitude and Longitude are required" });
+    }
+
+    // Convert to numbers
+    lat = parseFloat(lat);
+    lon = parseFloat(lon);
+
+    if (isNaN(lat) || isNaN(lon)) {
+      return res.status(400).json({ error: "Invalid coordinates" });
+    }
+
+    // Example: bounding box around the given point
+    const minLon = lon - 0.05;
+    const maxLon = lon + 0.05;
+    const minLat = lat - 0.05;
+    const maxLat = lat + 0.05;
+
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&bounded=1&viewbox=${minLon},${minLat},${maxLon},${maxLat}&q=hospital`
+    );
+
+    const data = await response.json();
+    console.log("Backend returned:", data);
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
+  }
+});
