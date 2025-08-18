@@ -1,4 +1,3 @@
-
 import DashboardLayout from "../components/DashboardLayout";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -23,24 +22,6 @@ import {
 } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 
-// interface AnalysisData {
-//   analysis: {
-//     fullAnalysis: string;
-//     urgencyLevel: string;
-//     riskFactors?: string[];
-//     patientData?: {
-//       age?: number;
-//       gender?: string;
-//       bmi?: number;
-//       symptomsCount?: number;
-//       symptomDuration?: number;
-//       severityLevel?: string;
-//     };
-//     disclaimer?: string;
-//     timestamp: string;
-//   };
-// }
-
 interface AnalysisData {
   status: string;
   analysis: {
@@ -57,7 +38,7 @@ interface AnalysisData {
     };
     disclaimer?: string;
     timestamp: string;
-    primaryRecommendation?: string; // if stored in DB
+    primaryRecommendation?: string;
   };
   error?: string;
   createdAt: string;
@@ -78,44 +59,16 @@ export default function Diagnosis() {
   const navigate = useNavigate();
   const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null);
   const [analysisLoading, setAnalysisLoading] = useState(true);
-
-  // Debug the loading state changes
-  useEffect(() => {
-    console.log('🔄 analysisLoading state changed to:', analysisLoading);
-  }, [analysisLoading]);
   const [error, setError] = useState<string | null>(null);
   const [_, setLoading] = useState(false);
 
   const hasInitialized = useRef(false);
-
-  // Extract the values once to prevent dependency issues
   const diagnosisId = location.state?.diagnosisId;
   const resultData = location.state?.result;
 
-  // Debug function to log the actual data structure
-  const debugDataStructure = (data: any) => {
-    console.log('=== DEBUG: Full Data Structure ===');
-    console.log('Data:', data);
-    console.log('Data type:', typeof data);
-    console.log('Data keys:', Object.keys(data || {}));
-    
-    if (data?.analysis) {
-      console.log('Analysis exists:', data.analysis);
-      console.log('Analysis keys:', Object.keys(data.analysis || {}));
-      console.log('fullAnalysis exists:', !!data.analysis.fullAnalysis);
-      console.log('urgencyLevel exists:', !!data.analysis.urgencyLevel);
-      console.log('urgencyLevel value:', data.analysis.urgencyLevel);
-      console.log('fullAnalysis preview:', data.analysis.fullAnalysis?.substring(0, 100));
-    } else {
-      console.log('❌ No analysis property found');
-    }
-    console.log('===================================');
-  };
-
-
   useEffect(() => {
   let pollingInterval: NodeJS.Timeout | null = null;
-  let isComponentMounted = true; // prevent updates after unmount
+  let isComponentMounted = true; 
 
   const fetchDiagnosis = async () => {
     try {
@@ -141,9 +94,7 @@ export default function Diagnosis() {
             return res.json();
           });
 
-      if (!isComponentMounted) return; // don't update state after unmount
-
-      debugDataStructure(data);
+      if (!isComponentMounted) return;
       setAnalysisData(data);
 
       if (data?.status === "completed" || data?.analysis?.fullAnalysis) {
@@ -151,7 +102,6 @@ export default function Diagnosis() {
         setAnalysisLoading(false);
         if (pollingInterval) clearInterval(pollingInterval);
       } else {
-        // Still processing → keep loading spinner active
         setAnalysisLoading(true);
       }
     } catch (err) {
@@ -177,13 +127,10 @@ export default function Diagnosis() {
   };
 }, [diagnosisId, resultData]);
 
-
-  // Retry function for manual retries
   const retryFetch = useCallback(() => {
-    hasInitialized.current = false; // Reset the flag
+    hasInitialized.current = false; 
     setError(null);
     setAnalysisLoading(true);
-    // The useEffect will run again due to the dependency change
   }, []);
 
   const getUrgencyColor = (level: string) => {
@@ -256,7 +203,6 @@ DISCLAIMER: ${analysisData.analysis.disclaimer || 'This analysis is for informat
     URL.revokeObjectURL(url);
   };
 
-  // Loading component for analysis sections
   const AnalysisLoadingSkeleton = () => (
     <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
       <div className="flex items-center mb-4">
@@ -272,7 +218,6 @@ DISCLAIMER: ${analysisData.analysis.disclaimer || 'This analysis is for informat
     </div>
   );
 
-  // Skeleton loader for analysis section
 const AnalysisSkeleton = () => (
   <div className="p-6 border rounded-xl shadow-sm bg-white animate-pulse space-y-4">
     <div className="h-6 bg-gray-300 rounded w-1/3"></div>
@@ -283,7 +228,6 @@ const AnalysisSkeleton = () => (
   </div>
 );
 
-  // Helper component for consistent section styling
   const AnalysisSection = ({ icon, title, content, className = "bg-white", isLoading = false }: AnalysisSectionProps) => {
     if (isLoading) {
       return <AnalysisLoadingSkeleton />;
@@ -336,11 +280,9 @@ const AnalysisSkeleton = () => (
     );
   }
 
-  // Always render the page layout, but show loading for analysis sections
   const analysis = analysisData?.analysis;
   const fullAnalysis = analysis?.fullAnalysis || "";
 
-  // Parse different sections from the analysis (only if we have data)
   const assessmentSummary = fullAnalysis ? parseAnalysisSection(fullAnalysis, "ASSESSMENT SUMMARY") : "";
   const possibleConditions = fullAnalysis ? parseAnalysisSection(fullAnalysis, "POSSIBLE CONDITIONS") : "";
   const recommendations = fullAnalysis ? parseAnalysisSection(fullAnalysis, "RECOMMENDATIONS") : "";

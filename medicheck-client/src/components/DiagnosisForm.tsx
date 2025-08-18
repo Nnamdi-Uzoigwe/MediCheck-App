@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import Progress from "./Progress";
 import Button from "./Button";
@@ -193,10 +191,6 @@ useEffect(() => {
       // Get token and validate it exists
       const token = sessionStorage.getItem("token");
 
-      console.log("Token retrieved:", token);
-      console.log("Token exists:", !!token);
-      console.log("Token length:", token?.length);
-
       if (!token) {
         alert("Authentication token not found. Please login again.");
         // Redirect to login page
@@ -208,11 +202,6 @@ useEffect(() => {
       try {
         const tokenPayload = JSON.parse(atob(token.split(".")[1]));
         const currentTime = Math.floor(Date.now() / 1000);
-
-        console.log("Token payload:", tokenPayload);
-        console.log("Token expires at:", new Date(tokenPayload.exp * 1000));
-        console.log("Current time:", new Date());
-        console.log("Token expired:", currentTime > tokenPayload.exp);
 
         if (currentTime > tokenPayload.exp) {
           alert("Your session has expired. Please login again.");
@@ -228,8 +217,6 @@ useEffect(() => {
         return;
       }
 
-      console.log("Making request with token:", token.substring(0, 20) + "...");
-
       const response = await fetch(
         "https://medicheck-app-3.onrender.com/api/symptoms",
         {
@@ -241,9 +228,6 @@ useEffect(() => {
           body: JSON.stringify(formData),
         }
       );
-
-      console.log("Response status:", response.status);
-      console.log("Response ok:", response.ok);
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -260,7 +244,6 @@ useEffect(() => {
       }
 
       const responseData = await response.json();
-      console.log("Success response:", responseData);
       toast.success("Symptoms submitted successfully!");
       const { diagnosisId, status } = responseData;
 
