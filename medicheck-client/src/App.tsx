@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ScrollToTop from "./components/ScrollToTop";
+import { AuthProvider } from "./utils/AuthContext";
 
 function App() {
   const location = useLocation();
@@ -31,7 +32,8 @@ function App() {
   ].includes(location.pathname);
 
   return (
-    //  <Router>
+    <AuthProvider>
+
     <div className="bg-[#F8F9FE]">
       <ScrollToTop />
       {!hideLayout && <Navbar />}
@@ -46,7 +48,7 @@ function App() {
               <DashboardContainer />
             </ProtectedRoute>
           }
-        />
+          />
         <Route
           path="/dashboard/symptoms"
           element={
@@ -54,7 +56,7 @@ function App() {
               <SymptomForm />
             </ProtectedRoute>
           }
-        />
+          />
         <Route
           path="/dashboard/diagnosis"
           element={
@@ -62,7 +64,7 @@ function App() {
               <Diagnosis />
             </ProtectedRoute>
           }
-        />
+          />
         <Route
           path="/dashboard/find"
           element={
@@ -70,7 +72,7 @@ function App() {
               <FindHospital />
             </ProtectedRoute>
           }
-        />
+          />
         <Route
           path="/dashboard/profile"
           element={
@@ -78,7 +80,7 @@ function App() {
               <Profile />
             </ProtectedRoute>
           }
-        />
+          />
         <Route
           path="/dashboard/record"
           element={
@@ -91,7 +93,7 @@ function App() {
       {!hideLayout && <Footer />}
       <ToastContainer position="top-right" autoClose={2000} />
     </div>
-    //  </Router>
+    </AuthProvider>
   );
 }
 

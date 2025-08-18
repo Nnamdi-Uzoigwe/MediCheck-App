@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner  from "../components/Spinner";
+import { useAuth } from "../utils/AuthContext";
 
 interface LoginForm {
   email: string;
@@ -10,6 +11,7 @@ interface LoginForm {
 }
 
 export default function Login() {
+  const { login } = useAuth();
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState<LoginForm>({
     email: "",
@@ -22,49 +24,34 @@ export default function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (!formData.email || !formData.password) {
-      toast.error("Please fill in all fields");
-      return;
-    }
+  if (!formData.email || !formData.password) {
+    toast.error("Please fill in all fields");
+    return;
+  }
 
-    setLoading(true);
+  setLoading(true);
 
-    try {
-      const res = await fetch("https://medicheck-app-3.onrender.com/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+  try {
+    // Call login from AuthContext, which returns boolean
+    const success = await login(formData.email, formData.password);
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast.error(data.message || "Something went wrong. Please try again.");
-        return;
-      }
-
+    if (success) {
       toast.success("Login successful!");
-
-      // Store JWT in localStorage
-      sessionStorage.setItem("token", data.token);
-
-      sessionStorage.setItem('user', JSON.stringify(data.user));
-        console.log("token set at login:", data.token);
-        
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 3000);
-    } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
+      navigate("/dashboard"); // navigate immediately after user is set in context
+    } else {
+      toast.error("Invalid credentials");
     }
-  };
+  } catch (error) {
+    console.error("Login error:", error);
+    toast.error("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gray-50">

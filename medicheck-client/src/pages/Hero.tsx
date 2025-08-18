@@ -1,4 +1,5 @@
 import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
     return (
@@ -8,7 +9,9 @@ export default function Hero() {
                 <p className="w-full lg:w-[70%] text-md lg:text-lg text-gray-500 font-semibold my-6 text-center lg:text-left">
                     AI-powered symptom analysis and instant access to nearby healthcare facilities when you need them most.
                 </p>
-                <Button>Check Your Symptoms Now</Button>
+                <Link to="/dashboard">
+                    <Button>Check Your Symptoms Now</Button>
+                </Link>
             </div>
             <img src="/two.png" alt="" className="w-[80%] lg:w-full" />
             
