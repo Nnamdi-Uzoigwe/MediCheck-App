@@ -9,11 +9,12 @@ const diagnosisRoute = require("./routes/diagnosisRoute");
 const hospitalRoutes = require("./routes/hospitalRoute");
 const geocodeRoute = require("./routes/geocode");
 const hospitalsRoutes = require("./routes/hospitalsRoutes");
+const profileRoute = require("./routes/profileRoute");
 const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://medicheck-app.vercel.app', 'http://localhost:5173'], // Common frontend ports
+    origin: ['https://medicheck-app.vercel.app', 'http://localhost:5173'],
   credentials: true
 }));
 
@@ -23,6 +24,7 @@ app.use("/api/diagnosis", diagnosisRoute);
 app.use("/api/save-hospital", hospitalRoutes);
 app.use('/api/geocode', geocodeRoute);
 app.use("/api/hospitals", hospitalsRoutes);
+app.use("/api/profile", profileRoute);
 
 
 mongoose.connect(process.env.MONGO_DB_URI)
