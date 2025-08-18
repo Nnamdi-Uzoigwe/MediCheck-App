@@ -405,11 +405,17 @@ export default function Record() {
                       Created: {new Date(diag.createdAt).toLocaleDateString()}
                     </p>
 
-                    <p className="text-sm mt-2">
+                    {/* <p className="text-sm mt-2">
                     Symptoms:
                       <span className="text-[#005eaa] font-semibold"></span>{" "}
                       {diag.symptoms?.join(", ")}
-                    </p>
+                    </p> */}
+                    <p className="text-sm mt-2">
+  <span className="text-[#005eaa] font-semibold">Symptoms:</span>{" "}
+  {Object.values(diag.symptoms || {})
+    .map((s) => JSON.stringify(s)) // convert each nested object to string
+    .join(", ")}
+</p>
                     
                     {/* <p className="text-sm mt-2">
   <span className="text-[#005eaa] font-semibold">Symptoms:</span>{" "}
