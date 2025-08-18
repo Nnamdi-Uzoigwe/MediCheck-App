@@ -474,7 +474,7 @@ export default function ProfilePage() {
         setIsLoading(true);
         if (!user?.id) throw new Error("User not authenticated");
 
-        const res = await fetch(`http://localhost:5000/api/profile/${user.id}`);
+        const res = await fetch(`https://medicheck-app-3.onrender.com/api/profile/${user.id}`);
         if (res.status === 404) {
           // Profile not found yet
           setProfile({ ...profile });
@@ -510,7 +510,7 @@ export default function ProfilePage() {
       if (!user?.id) throw new Error("User not authenticated");
 
       const method = profile._id ? "PUT" : "POST";
-      const url = profile._id ? `http://localhost:5000/api/profile/${user.id}` : `http://localhost:5000/api/profile`;
+      const url = profile._id ? `https://medicheck-app-3.onrender.com/api/profile/${user.id}` : `https://medicheck-app-3.onrender.com/api/profile`;
 
       const body = profile._id ? formData : { ...formData, userId: user.id };
 
@@ -578,7 +578,7 @@ export default function ProfilePage() {
         <div className="max-w-2xl mx-auto pt-2 lg:pt-10">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-[#005eaa] mb-2 flex items-center justify-center gap-3">
+            <h1 className="text-2xl lg:text-3xl font-bold text-[#005eaa] mb-2 flex items-center justify-center gap-3">
               <User className="text-[#005eaa]" size={40} />
               My Profile
             </h1>

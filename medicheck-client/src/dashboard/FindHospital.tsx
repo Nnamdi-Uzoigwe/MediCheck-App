@@ -43,7 +43,7 @@ const FindHospitalPage: React.FC = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/hospitals/search",
+        "https://medicheck-app-3.onrender.com/api/hospitals/search",
         {
           method: "POST",
           headers: {
@@ -94,41 +94,6 @@ const FindHospitalPage: React.FC = () => {
     }
   };
 
-  // const saveHospital = async (hospital: Hospital) => {
-  //   try {
-  //     const token = sessionStorage.getItem("token");
-  //     const response = await fetch("http://localhost:5000/api/save-hospital", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: token ? `Bearer ${token}` : "",
-  //       },
-  //       body: JSON.stringify(hospital),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to save hospital");
-  //     }
-
-  //     const data = await response.json();
-
-  //     if (data.success) {
-  //       setSavedHospitals((prev) => new Set([...prev, hospital.id]));
-
-  //       // Show specific success message
-  //       toast("Hospital saved successfully!");
-
-  //       // Clear any previous errors
-  //       setError("");
-  //     } else {
-  //       // Show specific error from backend
-  //       throw new Error(data.error || "Failed to save hospital");
-  //     }
-  //   } catch (error: any) {
-  //     console.error("Error saving hospital:", error);
-  //     setError(error.message || "Failed to save hospital. Please try again.");
-  //   }
-  // };
 
   const saveHospital = async (hospital: Hospital) => {
   try {
@@ -139,7 +104,7 @@ const FindHospitalPage: React.FC = () => {
 
     const { id: userId } = JSON.parse(user);
 
-    const response = await fetch("http://localhost:5000/api/save-hospital", {
+    const response = await fetch("https://medicheck-app-3.onrender.com/api/save-hospital", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

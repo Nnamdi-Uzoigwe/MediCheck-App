@@ -110,6 +110,7 @@ export default function Sidebar() {
             <NavLink
               key={link.to}
               to={link.to}
+              end={link.to === "/dashboard"}
               className={({ isActive }) =>
                 `flex items-center gap-3 p-3 rounded-md transition-colors duration-200 
                 ${isActive ? "bg-[#07355b] text-white" : "hover:bg-[#005eaa]"}`

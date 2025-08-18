@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Progress from "./Progress";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
@@ -86,6 +86,11 @@ export default function DiagnosisForm() {
       notes: "",
     },
   });
+
+useEffect(() => {
+  // Scroll to top whenever step changes
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}, [step]);
 
   // Helper functions to update form data
   const updateCoreSymptoms = (updates: Partial<CoreSymptoms>) => {
