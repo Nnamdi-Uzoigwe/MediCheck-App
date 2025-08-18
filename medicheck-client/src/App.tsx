@@ -113,5 +113,17 @@
 
 
 export default function App() {
-  <div>MediCheck App</div>
+  return (
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      flexDirection: "column",
+      textAlign: "center"
+    }}>
+      <h1>🚧 Site Disabled 🚧</h1>
+      <p>This site is temporarily unavailable until payment is completed.</p>
+    </div>
+  );
 }
