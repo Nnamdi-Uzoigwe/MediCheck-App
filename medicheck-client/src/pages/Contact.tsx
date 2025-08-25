@@ -1,99 +1,4 @@
-// import { ChevronDown, Mail, Phone, Send } from "lucide-react";
-// import { useState } from "react";
 
-// export default function Contact() {
-//     const [formData, setFormData] = useState({
-//         name: "",
-//         phone: "",
-//         email: "",
-//         subject: "",
-//         message: ""
-//     })
-//   return (
-//     <div className="px-6 lg:px-40 py-20 grid grid-cols-1 lg:grid-cols-2">
-//       <div>
-//         <h3 className="font-semibold text-2xl"> Get In Touch With Us</h3>
-//         <p className="text-sm text-gray-600 w-[60%] my-4">
-//           Have questions about MediCheck? We're here to help with your inquiries
-//           about our health guidance platform.
-//         </p>
-
-//         <div className="mt-10 flex flex-col gap-2">
-//           <div className="font-semibold flex gap-2 items-center">
-//             <span className="h-10 w-10 rounded-full bg-[#005eaa] text-white flex items-center justify-center">
-//               <Phone />
-//             </span>
-//             +234 905 345 1102
-//           </div>
-//           <div className="font-semibold flex gap-2 items-center">
-//             <span className="h-10 w-10 rounded-full bg-[#00A0AA] text-white flex items-center justify-center">
-//               <Mail />
-//             </span>
-//             medicheck@health.care
-//           </div>
-//         </div>
-//       </div>
-
-//       <form className="bg-white p-6 w-fit rounded-[20px] shadow-sm flex flex-col gap-4">
-//         <div>
-//             <input 
-//                 type="text" 
-//                 placeholder="Name"
-//                 className="w-auto min-w-[250px] lg:min-w-[450px] border-2 border-gray-400 text-lg p-2 rounded-[12px] text-gray-600"
-//                 value={formData.name}
-//                 onChange={(e) => setFormData(e.target.value)}
-//             />
-//         </div>
-//         <div>
-//             <input 
-//                 type="text" 
-//                 placeholder="Phone"
-//                 className="w-auto min-w-[250px] lg:min-w-[450px] border-2 border-gray-400 text-lg p-2 rounded-[12px] text-gray-600"
-//                 value={formData.phone}
-//                 onChange={(e) => setFormData(e.target.value)}
-//             />
-//         </div>
-//         <div>
-//             <input 
-//                 type="email" 
-//                 placeholder="Email"
-//                 className="w-auto min-w-[250px] lg:min-w-[450px] border-2 border-gray-400 text-lg p-2 rounded-[12px] text-gray-600"
-//                 value={formData.email}
-//                 onChange={(e) => setFormData(e.target.value)}
-//             />
-//         </div>
-    
-//          <div className="relative">
-//             <div className="w-auto min-w-[250px] lg:min-w-[450px] border-2 border-gray-400 text-lg p-2 rounded-[12px] text-gray-600">
-//                 <select className="w-full appearance-none bg-transparent outline-none pr-8">
-//                     <option>Select</option>
-//                     <option>General Inquiry</option>
-//                     <option>Technical Support</option>
-//                     <option>Medical Questions</option>
-//                     <option>Partnership Opportunities</option>
-//                     <option>Feedback & Suggestions</option>
-//                     <option>Press & Media</option>
-//                 </select>
-//             </div>
-//             <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
-//         </div>
-//         <div>
-//             <textarea placeholder="Message..." className="w-auto min-w-[250px] lg:min-w-[450px] h-auto min-h-[300px] lg:min-h-[200px] border-2 border-gray-400 p-2 rounded-[12px]">
-
-//             </textarea>
-//         </div>
-//         <div className="relative">
-//         <input 
-//             type="submit"  
-//             value="Send"
-//             className="w-auto min-w-[250px] lg:min-w-[450px] bg-[#00A0AA] text-white text-lg p-2 rounded-[12px]"
-//             />
-//         <Send className="absolute top-3 right-[170px]" color="white"/>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }
 "use client"
 
 import { ChevronDown, Mail, Phone, Send } from "lucide-react";
@@ -124,7 +29,7 @@ export default function Contact() {
     };
 
     return (
-        <div className="px-4 sm:px-6 lg:px-40 py-12 lg:py-20">
+        <div id="contact" className="px-4 sm:px-6 lg:px-40 py-12 lg:py-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 {/* Left Column - Contact Info */}
                 <div className="order-2 lg:order-1">

@@ -41,7 +41,7 @@ export default function Features() {
     },
   ];
   return (
-    <div className="mt-20 mb-4 px-6 lg:px-40">
+    <div id="features" className="mt-20 mb-4 px-6 lg:px-40">
         <h2 className="text-gray-700 font-semibold text-3xl text-center mb-10">Explore our Features</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

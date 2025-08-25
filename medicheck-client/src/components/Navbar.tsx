@@ -33,8 +33,8 @@ export default function Navbar() {
 
         <div className="links hidden  text-md font-semibold lg:flex gap-8">
           <Link to="/">Home</Link>
-          <Link to="/Features">Features</Link>
-          <Link to="/Contact">Contact</Link>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
           <Link to="/login">Login</Link>
         </div>
         <div className="hidden lg:flex">
@@ -63,8 +63,8 @@ export default function Navbar() {
           <div className="flex justify-between rounded-md lg:hidden absolute right-3 p-4 w-[250px] top-[20px] bg-[#005eaa]">
             <div className="links mt-10 text-white text-lg flex flex-col gap-4">
               <Link to="/">Home</Link>
-              <Link to="/Features">Features</Link>
-              <Link to="/Contact">Contact</Link>
+              <a href="#features">Features</a>
+              <a href="#contact">Contact</a>
               <Link to="/login">Login</Link>
               {user ? (
                 <Link
